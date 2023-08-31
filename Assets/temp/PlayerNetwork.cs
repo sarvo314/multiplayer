@@ -50,7 +50,12 @@ public class PlayerNetwork : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
 
-            Instantiate(spawnedObjectPrefab);
+            Transform spawnedObjectTransform = Instantiate(spawnedObjectPrefab);
+            //just instantiate does nothing
+
+            //we need to spawn
+            spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
+
             //TestServerRpc(new ServerRpcParams());
             //TestClientRpc(new ClientRpcParams
             //{
